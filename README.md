@@ -1,6 +1,26 @@
 # Safe Transcript Scrubber
 
-A privacy-first, local-first CLI tool for scrubbing sensitive data from text transcripts.
+Privacy-first, local-first transcript scrubbing for demos, internal review, and portfolio-safe sharing.
+
+`safe-transcript-scrubber` is a Python CLI that:
+- redacts classic PII from `.txt` and `.vtt` transcripts
+- pseudonymizes speaker labels (`Name:` -> `SPEAKER_1:`)
+- flags high-risk narrative content that can still be re-identifying
+- produces safer public-demo variants with conservative phrase-level generalization
+- generates fully synthetic demo transcripts for testing and examples
+
+It is designed for local workflows where privacy matters and external API calls are not acceptable.
+
+## Why this project
+
+PII removal alone is not enough for sensitive transcript data. Even after names, phones, and emails are removed, a transcript can still reveal identity through relationship context, legal details, recording context, or unusually specific narrative events.
+
+This project treats transcript privacy as a layered problem:
+- first-pass PII redaction
+- optional NER-assisted redaction in strong mode
+- high-risk content analysis
+- stricter public-demo output for shareable examples
+- synthetic transcript generation for safe demos and testing
 
 ## Purpose
 
@@ -9,6 +29,16 @@ A privacy-first, local-first CLI tool for scrubbing sensitive data from text tra
 - `scrubbed.txt` with detected PII replaced by consistent placeholders
 - `redaction_report.json` with summary counts and metadata
 - `risk_report.json` with high-risk content flags and score
+
+## Highlights
+
+- Local-first CLI with standard library argument parsing and file output
+- `fast` mode for regex-only scrubbing
+- `strong` mode with optional spaCy NER integration
+- `public-demo` policy with safer output separation:
+  - `scrubbed_internal.txt`
+  - `scrubbed_public.txt`
+- Synthetic transcript generator for demo-safe examples in `.txt` or `.vtt`
 
 ## Local-first privacy posture
 
