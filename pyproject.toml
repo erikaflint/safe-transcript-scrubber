@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safe-transcript-scrubber"
+version = "0.1.0"
+description = "Local-first transcript scrubber for PII redaction"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+spacy = ["spacy>=3.7.0"]
+
+'test' = ["pytest>=7.0"]
+
+[project.scripts]
+safe-scrub = "safe_scrub.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

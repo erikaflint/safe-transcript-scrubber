@@ -1,0 +1,18 @@
+[
+  {
+    "filename": "synthetic_001.vtt",
+    "risk": "low",
+    "seed": 42,
+    "template": "stress_reset",
+    "topic": "stress",
+    "turns": 83
+  },
+  {
+    "filename": "synthetic_002.vtt",
+    "risk": "low",
+    "seed": 43,
+    "template": "stress_reset",
+    "topic": "stress",
+    "turns": 116
+  }
+]
