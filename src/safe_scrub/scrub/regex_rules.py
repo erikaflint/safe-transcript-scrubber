@@ -35,6 +35,8 @@ REGEX_RULES: list[RegexRule] = [
     ),
     RegexRule(
         label="LONG_NUMBER",
-        pattern=re.compile(r"\b\d{8,}\b"),
+        # Catches account/reference/ID-shaped numbers of 8+ total digits, whether or not
+        # they're separator-formatted (dashes, dots, spaces), not just unbroken digit runs.
+        pattern=re.compile(r"\b\d(?:[-.\s]?\d){7,}\b"),
     ),
 ]
